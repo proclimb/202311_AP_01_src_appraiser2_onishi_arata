@@ -239,14 +239,28 @@ function subStockEditView($param)
 		<input type="hidden" name="orderTo" value="<?php print $param["orderTo"] ?>" />
 		<input type="hidden" name="sPage" value="<?php print $param["sPage"] ?>" />
 		<input type="hidden" name="stockNo" value="<?php print $param["stockNo"] ?>" />
+
+
 		<!-- <?php var_dump($param); ?> ★★★ 確認用 var_dump ★★★-->
+
 
 		<table border="0" cellpadding="5" cellspacing="1">
 			<tr>
 				<th>除外</th>
 				<td>
-					<input type="radio" name="del" value="1" checked /> 非除外
-					<input type="radio" name="del" value="0" /> 除外
+					<?php
+					if ($param["stockNo"]) {
+					?>
+						<input type="radio" name="del" value="1" <?php if ($param["del"] == 1) print ' checked="checked"'; ?> /> 非除外
+						<input type="radio" name="del" value="0" <?php if ($param["del"] == 0) print ' checked="checked"'; ?> /> 除外
+					<?php
+					} else {
+					?>
+						<input type="radio" name="del" value="1" checked /> 非除外
+						<input type="radio" name="del" value="0" /> 除外
+					<?php
+					} // if - else 部分の終了
+					?>
 				</td>
 			</tr>
 			<tr>
