@@ -295,11 +295,17 @@ function subStockEditView($param)
 				<th>距離</th>
 				<td>
 					<?php
-					for ($i = 0; $i < 4; $i++) {
+					for ($i = 1; $i <= 4; $i++) {
+						if ($param["stockNo"]) {
 					?>
-						<input type="radio" name="distance" value="<?php print $i + 1; ?>" <?php if ($param["distance"] == $i + 1) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i); ?>
+							<input type="radio" name="distance" value="<?php print $i; ?>" <?php if ($i == $param["distance"]) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i - 1); ?>
+						<?php
+						} else {
+						?>
+							<input type="radio" name="distance" value="<?php print $i; ?>" <?php if ($i == 1) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i - 1); ?>
 					<?php
-					}
+						} // if - else 部分の終了
+					} // for 部分の終了
 					?>
 				</td>
 			</tr>
