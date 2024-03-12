@@ -239,6 +239,7 @@ function subStockEditView($param)
 		<input type="hidden" name="orderTo" value="<?php print $param["orderTo"] ?>" />
 		<input type="hidden" name="sPage" value="<?php print $param["sPage"] ?>" />
 		<input type="hidden" name="stockNo" value="<?php print $param["stockNo"] ?>" />
+		<!-- <?php var_dump($param); ?> ★★★ 確認用 var_dump ★★★-->
 
 		<table border="0" cellpadding="5" cellspacing="1">
 			<tr>
@@ -256,12 +257,17 @@ function subStockEditView($param)
 				<th>ランク</th>
 				<td>
 					<?php
-					var_dump($param["rank"]); // あとで消す！！！！！
-					for ($i = 0; $i < 5; $i++) {
+					for ($i = 1; $i <= 5; $i++) {
+						if ($param["stockNo"]) {
 					?>
-						<input type="radio" name="rank" value="<?php print $i + 1; ?>" <?php if ($param["rank"] == $i + 1) print ' checked="checked"'; ?> /> <?php print fnRankName($i); ?>
+							<input type="radio" name="rank" value="<?php print $i; ?>" <?php if ($i == $param["rank"]) print ' checked="checked"'; ?> /> <?php print fnRankName($i - 1); ?>
+						<?php
+						} else {
+						?>
+							<input type="radio" name="rank" value="<?php print $i; ?>" <?php if ($i == 1) print ' checked="checked"'; ?> /> <?php print fnRankName($i - 1); ?>
 					<?php
-					}
+						} // if - else 部分の終了
+					} // for 部分の終了
 					?>
 				</td>
 			</tr>
