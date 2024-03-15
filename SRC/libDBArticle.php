@@ -86,15 +86,17 @@ function fnSqlArticleUpdate($articleNo, $article, $room, $keyPlace, $address, $a
 //
 //物件管理情報登録
 //
-function fnSqlArticleInsert($articleNo,  $keyPlace, $article, $address,  $keyBox, $articleNote, $drawing, $sellCharge, $room, $del)
+// function fnSqlArticleInsert($articleNo,  $keyPlace, $article, $address,  $keyBox, $articleNote, $drawing, $sellCharge, $room, $del) // 修正前
+function fnSqlArticleInsert($articleNo, $article, $room, $keyPlace, $address, $articleNote, $keyBox, $drawing, $sellCharge, $del)
 {
-	$sql  = "INSERT INTO tblarticle (";
+	$sql  = "INSERT INTO TBLARTICLE (";
 	$sql .= " ARTICLENO, ROOM, ARTICLE, KEYPLACE, ARTICLENOTE, KEYBOX, ADDRESS, DUEDT, SELLCHARGE, AREA, YEARS, SELLPRICE, INTERIORPRICE, CONSTTRADER,"
 		. " CONSTPRICE, CONSTADD, CONSTNOTE, PURCHASEDT, WORKSTARTDT, WORKENDDT, LINEOPENDT, LINECLOSEDT, RECEIVE, HOTWATER, SITEDT, LEAVINGFORM,"
 		. " LEAVINGDT, MANAGECOMPANY, FLOORPLAN, FORMEROWNER, BROKERCHARGE, BROKERCONTACT, INTERIORCHARGE, CONSTFLG1, CONSTFLG2, CONSTFLG3, CONSTFLG4, INSDT, UPDT, DEL,"
 		. " DRAWING, LINEOPENCONTACTDT, LINECLOSECONTACTDT, LINECONTACTNOTE, ELECTRICITYCHARGE, GASCHARGE, LIGHTORDER";
 	$sql .= " ) VALUES ( ";
-	$sql .= "'$articleNo', '$article', '$room', '$keyPlace', '$address', '$articleNote', '$keyBox', '', '$sellCharge', '', '', '', '', '',"
+	// $sql .= "'$articleNo', '$article', '$room', '$keyPlace', '$address', '$articleNote', '$keyBox', '', '$sellCharge', '', '', '', '', ''," // 修正前
+	$sql .= "'$articleNo', '$room', '$article', '$keyPlace', '$articleNote', '$keyBox', '$address', '', '$sellCharge', '', '', '', '', '',"
 		. " '', '', '', '', '', '', '', '', '', '', '', '',"
 		. " '', '', '', '', '', '', '', '', '', '', '', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '$del',"
 		. " '$drawing', '', '', '', '', '', '' )";
