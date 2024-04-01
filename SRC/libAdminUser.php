@@ -31,6 +31,7 @@ function subAdminUser()
 				$sql = fnSqlAdminUserList();
 				$res = mysqli_query($conn, $sql);
 
+
 				$i = 0;
 				while ($row = mysqli_fetch_array($res)) {
 					$userNo    = htmlspecialchars($row[0]);
